@@ -1,0 +1,10 @@
+
+
+.userMenu {
+    display: flex;
+    align-items: center;
+}
+
+.userEmail {
+    padding-right: 20px;
+}
