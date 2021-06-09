@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import authOps from "../../redux/auth/auth-operations";
 
 export default function RegisterView() {

@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { error } from "@pnotify/core";
+import "@pnotify/core/dist/PNotify.css";
+import "@pnotify/core/dist/BrightTheme.css";
+import { useSelector, useDispatch } from "react-redux";
 import { addEntry } from "../../redux/entries/entries-operations";
+import { getAllEntries } from "../../redux/entries/entries-selectors";
 import styles from "./InputForm.module.css";
 
 export default function InputForm() {
-
   const dispatch = useDispatch();
+  const entries = useSelector(getAllEntries);
+  
 
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -20,7 +25,16 @@ export default function InputForm() {
 
   const onSubmitEntry = (event) => {
     event.preventDefault();
-    dispatch(addEntry({name, number}));
+    if (entries.find((entry) => entry.name === name)) {
+      error({
+        title: "Error!",
+        text: `Notice me, senpai! It's me, ${name}, I'm already in the list!`,
+        icons: "brighttheme",
+      });
+      event.target.reset();
+      return;
+    }
+    dispatch(addEntry({ name, number }));
     event.target.reset();
   };
 

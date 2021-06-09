@@ -32,7 +32,7 @@
       "react-app/jest"
     ]
   },
-    "browserslist": {
+  "browserslist": {
     "production": [
       ">0.2%",
       "not dead",
@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@pnotify/core": "^5.2.0",
     "redux-devtools-extension": "^2.13.9",
     "uuid": "^8.3.2"
   }
